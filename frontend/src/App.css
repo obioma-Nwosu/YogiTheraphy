@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+:root{
+  --primary-black: #080404;
+  --yoga-blue: #253054;
+  --yoga-orange: #f1cc9c;
+}
+
+body{
+  font-family: "Roboto Condensed" sans-serif;
+}
+/********************************************************NAVBAR*************************************************************/
+.logo{
+  width: 4.063rem;
+  height: 2.813rem;
+}
+
+.navbar {
+  background-color: var(--yoga-orange);
+}
+
+/********************************************************NAV Links*************************************************************/
+nav a.nav-link{
+  font-size: .8rem;
+  letter-spacing: 0.0375rem;
+  cursor: pointer;
+}
+
+nav ul li{
+  text-transform: uppercase;
+}
+
+.navbar-nav > li > a {
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  color: var(--yoga-blue) !important;
+  border-bottom: 0.1875rem solid var(--yoga-orange); 
+}
+
+.navbar-brand{
+  max-width: 17.25rem;
+  padding: 3 0 !important;
+  height: 4rem !important;
+}
+
+.navbar-nav > li > a.active, .navbar-nav > li > a.active:focus{
+  border-bottom: 0.1875rem solid var(--primary-black);
+}
+
+.navbar-nav > li > a:hover{
+  border-bottom: 0.1875rem solid var(--primary-black);
+}
