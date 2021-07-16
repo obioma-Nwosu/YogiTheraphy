@@ -2,17 +2,19 @@ import React from 'react'
 import Typed from 'react-typed'
 import iosImage from '../img/appstore.png'
 import androidImage from '../img/googleplay.png'
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+    const { t } = useTranslation()
     return (
         <div className="header-wrapper">
             <div className="main-info">
-                <h2>Rheumatism and yoga</h2>
+                <h2>{t('welcome_message')}</h2>
                 <div className="">
 
                     <Typed
                         className="typed-text"
-                        strings={["Hi, We are YogiTherapy", "We provide, Ankylosing Spondyloarthritis Solutions", "Results, Assesments and Consultation"]}
+                        strings={[t('particle_text1'),t('particle_text2'),t('particle_text3')]}
                         typeSpeed={40}
                         backSpeed={60}
                         loop

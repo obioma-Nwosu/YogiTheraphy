@@ -3,7 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Particles from 'react-particles-js'
 import NavBar from './components/NavBar'
 import Header from './components/Header'
+import { useTranslation } from "react-i18next";
+
 function App() {
+  const { t } = useTranslation()
   return (
     <>
       <Particles

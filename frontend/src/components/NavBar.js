@@ -2,8 +2,11 @@ import React from 'react'
 import logo from '../img/YogiTherapy.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faHome, faVideo, faImages, faInfoCircle, faAddressCard, faUserPlus, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
+import { useTranslation } from "react-i18next";
 
 const NavBar = () => {
+    const { t } = useTranslation()
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container">
@@ -14,34 +17,34 @@ const NavBar = () => {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto">
+                    <ul className="navbar-nav ml-auto">
                         <li className="nav-item active">
                             <a className="nav-link" href="#">
-                                <FontAwesomeIcon icon={faHome} style={{ color: '#253054' }} /> Home</a>
+                                <FontAwesomeIcon icon={faHome} style={{ color: '#253054' }} /> {t('home')}</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">
-                                <FontAwesomeIcon icon={faVideo} style={{ color: '#253054' }} /> Videos</a>
+                                <FontAwesomeIcon icon={faVideo} style={{ color: '#253054' }} /> {t('videos')}</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">
-                                <FontAwesomeIcon icon={faImages} style={{ color: '#253054' }} /> Asanas</a>
+                                <FontAwesomeIcon icon={faImages} style={{ color: '#253054' }} /> {t('asanas')}</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">
-                                <FontAwesomeIcon icon={faInfoCircle} style={{ color: '#253054' }} /> Blog</a>
+                                <FontAwesomeIcon icon={faInfoCircle} style={{ color: '#253054' }} /> {t('blog')}</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">
-                                <FontAwesomeIcon icon={faAddressCard} style={{ color: '#253054' }} /> Contact</a>
+                                <FontAwesomeIcon icon={faAddressCard} style={{ color: '#253054' }} /> {t('contact')}</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">
-                                <FontAwesomeIcon icon={faUserPlus} style={{ color: '#253054' }} /> Register</a>
+                                <FontAwesomeIcon icon={faUserPlus} style={{ color: '#253054' }} /> {t('register')}</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">
-                                <FontAwesomeIcon icon={faSignInAlt} style={{ color: '#253054' }} /> Login</a>
+                                <FontAwesomeIcon icon={faSignInAlt} style={{ color: '#253054' }} /> {t('login')}</a>
                         </li>
                     </ul>
 
