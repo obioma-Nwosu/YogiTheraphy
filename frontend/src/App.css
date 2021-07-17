@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
 
-:root{
+:root {
   --primary-black: #080404;
   --yoga-blue: #253054;
   --yoga-orange: #f1cc9c;
 }
 
-body{
+body {
   font-family: "Roboto Condensed", sans-serif;
 }
 /********************************************************NAVBAR*************************************************************/
-nav{
+nav {
   z-index: 2;
 }
-.logo{
+.logo {
   width: 4.063rem;
   height: 2.813rem;
 }
@@ -23,13 +23,13 @@ nav{
 }
 
 /********************************************************NAV Links*************************************************************/
-nav a.nav-link{
-  font-size: .8rem;
+nav a.nav-link {
+  font-size: 0.8rem;
   letter-spacing: 0.0375rem;
   cursor: pointer;
 }
 
-nav ul li{
+nav ul li {
   text-transform: uppercase;
 }
 
@@ -37,35 +37,36 @@ nav ul li{
   margin-right: 0.75rem;
   margin-left: 0.75rem;
   color: var(--yoga-blue) !important;
-  border-bottom: 0.1875rem solid var(--yoga-orange); 
+  border-bottom: 0.1875rem solid var(--yoga-orange);
 }
 
-.navbar-brand{
+.navbar-brand {
   max-width: 17.25rem;
   padding: 3 0 !important;
   height: 4rem !important;
 }
 
-.navbar-nav > li > a.active, .navbar-nav > li > a.active:focus{
+.navbar-nav > li > a.active,
+.navbar-nav > li > a.active:focus {
   border-bottom: 0.1875rem solid var(--primary-black);
 }
 
-.navbar-nav > li > a:hover{
+.navbar-nav > li > a:hover {
   border-bottom: 0.1875rem solid var(--primary-black);
 }
-
 
 /******************************************************** Header *************************************************************/
-.header-wrapper{
+.header-wrapper {
   position: relative;
-  background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./img/headerImage.png) no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(./img/headerImage.png) no-repeat;
   background-size: contain;
   background-attachment: fixed;
   background-position: center;
   height: 100vh;
 }
 
-.main-info{
+.main-info {
   font-family: "Roboto Condensed", sans-serif;
   position: absolute;
   top: 0;
@@ -79,18 +80,16 @@ nav ul li{
   text-align: center;
   z-index: 1;
 }
-.main-info h2{
+.main-info h2 {
   color: var(--yoga-orange);
   text-transform: uppercase;
 }
 
-
 /******************************************************** Typed Text*************************************************************/
-.typed-text{
+.typed-text {
   font-size: 2rem;
   color: #fff;
 }
-
 
 /******************************************************** Header Buttons *************************************************************/
 
@@ -101,31 +100,28 @@ nav ul li{
   font-size: 1.125rem;
 }
 
-
-
 /******************************************************** Particles Styling *************************************************************/
-.tsparticles-canvas-el{
+.tsparticles-canvas-el {
   position: absolute;
   height: 100vh;
   width: 100vw;
   z-index: 1;
 }
 
-@media(max-width:768px){
-  .particles-canvas{
+@media (max-width: 768px) {
+  .particles-canvas {
     display: none;
   }
-  .typed-text{
+  .typed-text {
     font-size: 1rem;
   }
-  
 }
 
-@media(max-width:500px){
-  .particles-canvas{
+@media (max-width: 500px) {
+  .particles-canvas {
     display: none;
   }
-  .typed-text{
+  .typed-text {
     font-size: 0.8rem;
   }
   .btn-app img {
@@ -134,5 +130,4 @@ nav ul li{
     margin-top: 8rem;
     font-size: 1.125rem;
   }
-  
 }
