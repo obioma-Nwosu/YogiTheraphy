@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Particles from 'react-particles-js'
 import NavBar from './components/NavBar'
 import Header from './components/Header'
+import VideoSection from './components/VideoSection'
 import Users from './pages/user';
 import Login from './pages/login'
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
@@ -36,6 +37,7 @@ const App = () => {
             }}
           />
           <Header />
+          <VideoSection/>
         </Route>
         <Route path="/login" exact>
           <Login />

@@ -1,0 +1,25 @@
+:root {
+  --primary-black: #080404;
+  --yoga-blue: #253054;
+  --yoga-orange: #f1cc9c;
+}
+
+/********************************************************Button*************************************************************/
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:visited {
+  background-color: var(--yoga-orange) !important;
+}
+
+/********************************************************h-components*************************************************************/
+.vid-info h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--yoga-blue) !important;
+}
+
+h4 {
+  font-size: 1.2rem;
+  color: var(--yoga-blue) !important;
+}

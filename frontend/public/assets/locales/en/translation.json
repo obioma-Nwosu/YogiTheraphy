@@ -13,5 +13,9 @@
     "register": "Register",
     "login": "Login",
     "logout": "Logout",
-    "profile": "Profile"
+    "profile": "Profile",
+    "sort": "Sort by",
+    "select": "Select",
+    "new": "New",
+    "popular": "Popular"
 }
