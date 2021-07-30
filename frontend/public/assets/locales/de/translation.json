@@ -1,10 +1,14 @@
 {
     "app_title": "YogiTheraphy",
     "language": "Deutsche",
+
+
     "welcome_message": "RHEUMATISMUS UND YOGA",
     "particle_text1": "Hallo, wir sind Yogatherapie",
     "particle_text2": "Wir bieten Lösungen für Spondyloarthritis ankylosans",
     "particle_text3":  "Ergebnisse, Bewertungen und Beratung",
+
+
     "home": "Startseite",
     "videos": "Videos",
     "asanas": "Asanas",
@@ -14,8 +18,16 @@
     "login": "Anmeldung",
     "logout": "Ausloggen",
     "profile": "Profil",
+
+
     "sort": "Sortieren nach",
     "select": "Auswählen",
     "new": "Neu",
-    "popular": "Beliebt"
+    "popular": "Beliebt",
+
+    "beginner": "Anfänger",
+    "intermediate": "Mittelstufe",
+    "advanced": "Fortschrittlich",
+    "upperBody": "Oberkörper",
+    "lowerBody": "Unterkörper"
 }

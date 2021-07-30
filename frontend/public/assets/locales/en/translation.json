@@ -1,10 +1,14 @@
 {
     "app_title": "YogiTheraphy",
     "language": "English",
+
+
     "welcome_message": "RHEUMATISM AND YOGA",
     "particle_text1": "Hi, We are YogiTherapy",
     "particle_text2": "We provide Ankylosing Spondyloarthritis Solutions",
     "particle_text3":  "Results, Assesments and Consultation",
+
+
     "home": "Home",
     "videos": "Videos",
     "asanas": "Asanas",
@@ -14,8 +18,16 @@
     "login": "Login",
     "logout": "Logout",
     "profile": "Profile",
+
+
     "sort": "Sort by",
     "select": "Select",
     "new": "New",
-    "popular": "Popular"
+    "popular": "Popular",
+
+    "beginner": "Beginner",
+    "intermediate": "intermediate",
+    "advanced": "Advanced",
+    "upperBody": "Upper Body",
+    "lowerBody": "Lower Body"
 }
