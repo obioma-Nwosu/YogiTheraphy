@@ -3,63 +3,30 @@ const app = express()
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
+const cors = require('cors')
+require('dotenv/config')
+
+//cors configuration
+app.use(cors())
+app.options('*', cors())
+
+//env variables
+const api = process.env.API_URL
+const db = process.env.DB_URL
+
+//routers
+const asanasRouter = require('./routers/asanas')
+const usersRouter = require('./routers/users')
+const yogaRouter = require('./routers/yogaVideos')
 
 //middleware
 app.use(bodyParser.json())
 app.use(morgan('tiny'))
 
-require('dotenv/config')
+app.use(`${api}/asanas`, asanasRouter)
+app.use(`${api}/users`, usersRouter)
+app.use(`${api}/yogaVideos`, yogaRouter)
 
-const api = process.env.API_URL
-const db = process.env.DB_URL
-
-
-//Schemas
-const asanaSchema = mongoose.Schema({
-  isFav: Boolean,
-  name: String,
-  sanskrit: String,
-  level: Array,
-  type: Array,
-  image: String,
-  effect: String,
-  description: String,
-  watchout: String
-})
-
-//models
-const Asana = mongoose.model('Asana', asanaSchema)
-
-app.get(`${api}/asanas` , async (req, res) => {
-  const asanaList = await Asana.find()
-  if(!asanaList){
-    res.status(500).json({success: false})
-  }
-  res.send(asanaList)
-})
-
-app.post(`${api}/asanas` , (req, res) => {
-  const asana = new Asana({
-    isFav: req.body.isFav,
-    name: req.body.name,
-    sanskrit: req.body.sanskrit,
-    level: req.body.level,
-    type: req.body.type,
-    image: req.body.image,
-    effect: req.body.effect,
-    description: req.body.description,
-    watchout: req.body.watchout,
-  })
-
-  asana.save().then((createdAsana => {
-    res.status(201).json(createdAsana)
-  })).catch((err) => {
-    res.status(500).json({
-      error: err,
-      success: false
-    })
-  })
-})
 
 mongoose.connect(`${db}`)
   .then(() => console.log('Connected to DB'))
