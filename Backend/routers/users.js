@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { User } = require('../models/users')
+const mongoose = require('mongoose')
 
 router.get(`/`, async (req, res) => {
   const userList = await User.find()
@@ -11,6 +12,10 @@ router.get(`/`, async (req, res) => {
 })
 
 router.get(`/:id`, async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)){
+    return res.status(400).send('Invalid user Id')
+  }
+
   const user = await User.findById(req.params.id)
   if(!user){
     return res.status(500).json({success: false, message: `User with id ${req.params.id} cannot be found`})
@@ -37,6 +42,9 @@ router.post(`/` , async (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)){
+    return res.status(400).send('Invalid user Id')
+  }
   const user = await User.findByIdAndUpdate(
     req.params.id,
     {

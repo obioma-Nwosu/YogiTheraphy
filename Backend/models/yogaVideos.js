@@ -18,7 +18,7 @@ const yogaVideoSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  asanas: {
+  asana: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Asana',
     required: true
