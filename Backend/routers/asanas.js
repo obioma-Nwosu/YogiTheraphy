@@ -4,12 +4,30 @@ const { Asana } = require('../models/asanas')
 const mongoose = require('mongoose')
 
 router.get(`/` , async (req, res) => {
+
+  let filtered = {}
+  let filteredResult = await Asana.find()
+  if(req.query.type) {
+    filtered = {type: req.query.type.split(',')}
+    filteredResult = await Asana.find(filtered).populate('type')
+  }else if(req.query.level){
+    filtered = {level: req.query.level.split(',')}
+    filteredResult = await Asana.find(filtered).populate('level')
+  }
+
+  if(!filteredResult){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send(filteredResult)
+})
+
+/* router.get(`/` , async (req, res) => {
   const asanaList = await Asana.find()
   if(!asanaList){
     return res.status(500).json({success: false})
   }
   return res.send(asanaList)
-})
+}) */
 
 router.get(`/:id` , async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)){
@@ -94,5 +112,35 @@ router.delete(`/:id`, (req, res) => {
   })
   
 })
+
+router.get(`/get/count` , async (req, res) => {
+  const asanaCount = await Asana.countDocuments()
+
+  if(!asanaCount){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send({total: asanaCount})
+})
+
+router.get(`/get/featured` , async (req, res) => {
+  const asanaFeatured = await Asana.find({isFeautured: true})
+
+  if(!asanaFeatured){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send(asanaFeatured)
+})
+
+router.get(`/get/favourites` , async (req, res) => {
+  const asanaFavourites = await Asana.find({isFav: true})
+
+  if(!asanaFavourites){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send(asanaFavourites)
+})
+
+
+
 
 module.exports = router

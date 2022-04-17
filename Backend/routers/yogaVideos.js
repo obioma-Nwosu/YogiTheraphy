@@ -4,7 +4,7 @@ const router = express.Router()
 const { YogaVideo }= require('../models/yogaVideos')
 const mongoose = require('mongoose')
 
-router.get(`/`, async (req, res) => {
+/* router.get(`/`, async (req, res) => {
   const yogaList = await YogaVideo.find()
   //const yogaList = await YogaVideo.find().select("name level -_id")
   if(!yogaList){
@@ -13,6 +13,25 @@ router.get(`/`, async (req, res) => {
   return res.send(yogaList)
 })
 
+ */
+
+router.get(`/` , async (req, res) => {
+
+  let filtered = {}
+  let filteredResult = await YogaVideo.find()
+  if(req.query.focus) {
+    filtered = {focus: req.query.focus.split(',')}
+    filteredResult = await YogaVideo.find(filtered).populate('focus')
+  }else if(req.query.level){
+    filtered = {level: req.query.level.split(',')}
+    filteredResult = await YogaVideo.find(filtered).populate('level')
+  }
+
+  if(!filteredResult){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send(filteredResult)
+})
 
 router.get(`/:id`, async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)){
@@ -28,6 +47,14 @@ router.get(`/:id`, async (req, res) => {
   return res.send(yoga)
 })
 
+router.get(`/get/Videofavourites` , async (req, res) => {
+  const videoFavourites = await YogaVideo.find({isFav: true})
+
+  if(!videoFavourites){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send(videoFavourites)
+})
 
 router.post(`/` , async (req, res) => {
 
