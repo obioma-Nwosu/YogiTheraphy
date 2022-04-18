@@ -30,7 +30,19 @@ const yogaVideoSchema = mongoose.Schema({
   dateCreated: {
     type: Date,
     default: Date.now
+  },
+  isFeautured: {
+    type: Boolean,
+    default: false
   }
+})
+
+yogaVideoSchema.virtual('id').get(function () {
+  return this._id.toHexString();
+})
+
+yogaVideoSchema.set('toJSON', {
+  virtuals: true
 })
 
 //models

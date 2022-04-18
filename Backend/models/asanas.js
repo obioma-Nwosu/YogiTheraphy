@@ -51,5 +51,13 @@ const asanaSchema = mongoose.Schema({
   }
 })
 
+asanaSchema.virtual('id').get(function () {
+  return this._id.toHexString();
+})
+
+asanaSchema.set('toJSON', {
+  virtuals: true
+})
+
 //models
 exports.Asana = mongoose.model('Asana', asanaSchema)

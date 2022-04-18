@@ -5,6 +5,8 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cors = require('cors')
 require('dotenv/config')
+const authJwt = require('./helpers/jwt')
+const errorHandler = require('./helpers/errorHandler')
 
 //cors configuration
 app.use(cors())
@@ -22,6 +24,8 @@ const yogaRouter = require('./routers/yogaVideos')
 //middleware
 app.use(bodyParser.json())
 app.use(morgan('tiny'))
+app.use(authJwt)
+app.use(errorHandler)
 
 app.use(`${api}/asanas`, asanasRouter)
 app.use(`${api}/users`, usersRouter)

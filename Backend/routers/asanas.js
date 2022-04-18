@@ -3,6 +3,8 @@ const router = express.Router()
 const { Asana } = require('../models/asanas')
 const mongoose = require('mongoose')
 
+
+//******************************GET METHODS*************************************** */
 router.get(`/` , async (req, res) => {
 
   let filtered = {}
@@ -40,6 +42,36 @@ router.get(`/:id` , async (req, res) => {
   return res.status(200).send(asana)
 })
 
+router.get(`/get/count` , async (req, res) => {
+  const asanaCount = await Asana.countDocuments()
+
+  if(!asanaCount){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send({total: asanaCount})
+})
+
+router.get(`/get/featured` , async (req, res) => {
+  const asanaFeatured = await Asana.find({isFeautured: true})
+
+  if(!asanaFeatured){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send(asanaFeatured)
+})
+
+router.get(`/get/favourites` , async (req, res) => {
+  const asanaFavourites = await Asana.find({isFav: true})
+
+  if(!asanaFavourites){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send(asanaFavourites)
+})
+
+
+//******************************POST METHODS*************************************** */
+
 router.post(`/` , async (req, res) => {
   let asana = new Asana({
     isFav: req.body.isFav,
@@ -64,6 +96,8 @@ router.post(`/` , async (req, res) => {
   return res.send(asana)
 })
 
+
+//******************************PUT METHODS*************************************** */
 router.put('/:id', async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)){
     return res.status(400).send('Invalid user Id')
@@ -94,6 +128,9 @@ router.put('/:id', async (req, res) => {
 
 })
 
+
+//******************************DELETE METHODS*************************************** */
+
 router.delete(`/:id`, (req, res) => {
   Asana.findByIdAndRemove(req.params.id).then(asana => {
 
@@ -112,34 +149,6 @@ router.delete(`/:id`, (req, res) => {
   })
   
 })
-
-router.get(`/get/count` , async (req, res) => {
-  const asanaCount = await Asana.countDocuments()
-
-  if(!asanaCount){
-    return res.status(500).json({success: false})
-  }
-  return res.status(200).send({total: asanaCount})
-})
-
-router.get(`/get/featured` , async (req, res) => {
-  const asanaFeatured = await Asana.find({isFeautured: true})
-
-  if(!asanaFeatured){
-    return res.status(500).json({success: false})
-  }
-  return res.status(200).send(asanaFeatured)
-})
-
-router.get(`/get/favourites` , async (req, res) => {
-  const asanaFavourites = await Asana.find({isFav: true})
-
-  if(!asanaFavourites){
-    return res.status(500).json({success: false})
-  }
-  return res.status(200).send(asanaFavourites)
-})
-
 
 
 

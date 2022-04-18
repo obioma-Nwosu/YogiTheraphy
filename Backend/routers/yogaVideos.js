@@ -4,6 +4,8 @@ const router = express.Router()
 const { YogaVideo }= require('../models/yogaVideos')
 const mongoose = require('mongoose')
 
+//******************************GET METHODS*************************************** */
+
 /* router.get(`/`, async (req, res) => {
   const yogaList = await YogaVideo.find()
   //const yogaList = await YogaVideo.find().select("name level -_id")
@@ -56,6 +58,17 @@ router.get(`/get/Videofavourites` , async (req, res) => {
   return res.status(200).send(videoFavourites)
 })
 
+router.get(`/get/featured` , async (req, res) => {
+  const videoFeatured = await YogaVideo.find({isFeautured: true})
+
+  if(!videoFeatured){
+    return res.status(500).json({success: false})
+  }
+  return res.status(200).send(videoFeatured)
+})
+
+//******************************POST METHODS*************************************** */
+
 router.post(`/` , async (req, res) => {
 
   const asana = await Asana.findById(req.body.asana)
@@ -68,7 +81,8 @@ router.post(`/` , async (req, res) => {
     focus: req.body.focus,
     asana: req.body.asana,
     rating: req.body.rating,
-    dateCreated: req.body.dateCreated
+    dateCreated: req.body.dateCreated,
+    isFeautured: req.body.isFeautured
   })
 
   yoga = await yoga.save()
@@ -79,6 +93,7 @@ router.post(`/` , async (req, res) => {
   return res.send(yoga)
 })
 
+//******************************PUT METHODS*************************************** */
 
 router.put('/:id', async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)){
@@ -108,6 +123,7 @@ router.put('/:id', async (req, res) => {
 
 })
 
+//******************************DELETE METHODS*************************************** */
 router.delete(`/:id`, (req, res) => {
   YogaVideo.findByIdAndRemove(req.params.id).then(video => {
 
